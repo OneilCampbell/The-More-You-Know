@@ -1,0 +1,81 @@
+.game-over{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    height:830px;
+    background: #a1e6f7;  
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation:5s gradual ease-in-out infinite; 
+}
+
+@keyframes gradual{
+    50%{
+        background: #ffff99 
+    }
+}
+
+.end-game-pic{
+    position: absolute;
+    background: url("../../Assets/Images/gameover.png");
+    height:500px;
+    width:800px;
+    margin-left:200px;
+    margin-top:100px;
+}
+
+.dancing2{
+    height:200px;
+    width:200px;
+    margin-top:550px;
+    margin-left:1150px;
+    background:url("../../Assets/Gifs/DancingBannana.gif");
+    background-size: cover;
+    animation:7s up-left ease-in-out forwards infinite;
+}
+
+@keyframes up-left{
+    25%{
+        transform: translateY(-550px);
+    }
+    50%{
+        transform: translateY(-550px) translateX(-1150px); 
+    }
+    75%{
+        transform: translateX(-1150px);
+    }
+}
+
+.family-guy{
+    position: absolute;
+    margin-top:-780px;
+    height:300px;
+    width:300px;
+    background:url("../../Assets/Gifs/familyGuyBanana.gif");
+    background-size: cover;
+    animation:7s down-right ease-in-out infinite;
+}
+
+@keyframes down-right{
+    25%{
+        transform: translateY(550px);
+    }
+    50%{
+        transform: translateY(550px) translateX(1150px); 
+    }
+    75%{
+        transform: translateX(1150px);
+    }
+}
+
+.sandwhich{
+    position:absolute;
+    background: url("../../Assets/Gifs/sandwich.gif");
+    background-size:cover;
+    height:120px;
+    width:120px;
+    margin-top:-420px;
+    margin-left:570px;
+}

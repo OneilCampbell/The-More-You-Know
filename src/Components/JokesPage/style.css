@@ -1,0 +1,40 @@
+.alternate{
+    height:830px;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#ffff99;
+}
+
+.alternate-nav, .alternate-ul{
+    background:	rgb(238, 238, 238);
+    padding:10px;
+}
+
+.alternate-li:hover{
+    color: #ffff99;
+}
+
+.alternate-h1{
+    color:black;
+    text-shadow: none;
+    font-size: 70px;
+    width:800px;
+    margin-top:150px;
+    margin-left:300px;
+}
+
+.alternate-h1:hover{
+    cursor: pointer;
+}
+
+.alternate-p{
+    margin-top:100px;
+    margin-left:300px;
+    width:800px;
+    background:rgba(238, 238, 238, 0.8);
+    font-size: 60px;
+    text-align: center;
+}

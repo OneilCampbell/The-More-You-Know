@@ -1,0 +1,65 @@
+.landing{
+    height:830px;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#ffff99;
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+
+h1{
+    margin:0;
+    margin-top:20px;
+    color:#a1e6f7;
+    text-shadow:2px 2px black;
+    font-size:150px;
+    text-align: center;
+}
+
+.dancing-banana{
+    height:200px;
+    width:200px;
+    position: absolute;
+    margin-top:200px;
+    margin-left:350px;
+    background:url("../../Assets/Gifs/DancingBannana.gif");
+    background-size: cover;
+    animation: 5s teleport ease-in-out infinite;
+}
+
+@keyframes teleport{
+    25%{
+        margin-top:400px;
+    }
+    50%{
+        margin-left: 900px;
+    }
+}
+
+.question-mark-gif{
+    height:400px;
+    margin-top:50px;
+    background:url("../../Assets/Gifs/rotatingQuestionCube.gif");
+}
+
+.buttn{
+    margin-top:10px;
+    color:#a1e6f7;
+    text-shadow:2px 2px black;
+    font-size:100px;
+    text-align: center;
+    animation:.5s pulse ease-in-out infinite;
+}
+
+.buttn:hover{
+    cursor: pointer;
+}
+
+@keyframes pulse{
+    50%{
+        text-shadow: 5px 5px black;
+    }
+}

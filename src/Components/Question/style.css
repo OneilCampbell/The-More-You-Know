@@ -1,0 +1,13 @@
+.question{
+    padding:20px;
+    width:900px;
+    margin-left:250px;
+    margin-top:150px;
+}
+
+.question > h1{
+    color:black;
+    text-shadow: none;
+    text-align: center;
+    font-size: 55px;
+}

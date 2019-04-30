@@ -1,0 +1,21 @@
+.choice{
+    background:rgba(238, 238, 238, 0.6);
+    width:400px;
+    padding:5px;
+    text-align:center;
+    font-size: 40px;
+    margin-left:40px;
+    margin-top:50px;
+}
+
+.choice:hover{
+    cursor: pointer;
+}
+
+.correct{
+    background:lightgreen;
+}
+
+.wrong{
+    background:rgb(255, 101, 101);
+}
