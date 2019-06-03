@@ -1,6 +1,6 @@
 # The More You Know
-http://spectacular-scent.surge.sh/ \
-\
+[Play The Game](http://spectacular-scent.surge.sh/)
+
 The More You Know is a trivia based game with three categories: Trivia, Jokes, Flags. It is designed to be an interactive game that people can use for entertainment amongst their family and friends. Questions are randomly generated within their respective categories and when the user(s) have finished with one they can move on to the next, until there are no questions left.
 
 ### TRIVIA
