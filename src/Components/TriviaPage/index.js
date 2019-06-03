@@ -6,6 +6,8 @@ import Question from "../Question";
 import Choice from "../Choice";
 import SymbolsAndCodesData from "../SymbolsAndCodesData";
 
+let currChoiceSet = [];
+
 class TriviaPage extends Component {
    constructor() {
       super()
@@ -15,7 +17,9 @@ class TriviaPage extends Component {
          questions:[],
          choices:[],
          currentQuestion:"",
-         currentChoices:[]
+         currentChoices:[],
+         randomize: true,
+         answerChosen:false,
       }
    }
 
@@ -64,7 +68,9 @@ class TriviaPage extends Component {
          let choices = this.state.choices;
          let currentQuestion = questions[index];
          let currentChoices = choices[index];
-         this.setState({index, questions, choices, currentQuestion, currentChoices});
+         let answerChosen = false;
+         let randomize = true;
+         this.setState({index, questions, choices, currentQuestion, currentChoices, answerChosen, randomize});
       }
    }
 
@@ -81,24 +87,36 @@ class TriviaPage extends Component {
       return choiceSet;
    }
 
+   showCorrectAnswer = () => {
+      let answerChosen = true;
+      let randomize = false;
+      this.setState(prevState => ({prevState, answerChosen, randomize}));
+   }
+
+   choseAnswer = () => this.state.answerChosen;
+
    componentDidMount() {
       this.fetchTriviaData();
    }
 
    render() {
+      let currIndex = this.state.index;
       let currentQuestion = this.state.currentQuestion;
       let currentChoices = this.state.currentChoices;
-      let allChoices = currentChoices.map( (choice, index) => {
-         let parsedChoice = this.callReplaceString(choice);
-         return (
-            index === 0 
-            ?
-            <Choice key={index} content={parsedChoice} isCorrect={true} nextQuestion={this.nextQuestion}/> 
-            :
-            <Choice key={index} content={parsedChoice} isCorrect={false} nextQuestion={this.nextQuestion}/>
-         )
-      })
-      let randChoices = this.randomizeChoices(allChoices);
+      if(this.state.randomize){
+         let allChoices = currentChoices.map( (choice, index) => {
+            let parsedChoice = this.callReplaceString(choice);
+            return (
+               index === 0 
+               ?
+               <Choice key={index} content={parsedChoice} isCorrect={true} nextQuestion={this.nextQuestion} choseAnswer={this.choseAnswer}/> 
+               :
+               <Choice key={index} content={parsedChoice} isCorrect={false} nextQuestion={this.nextQuestion} choseAnswer={this.choseAnswer}/>
+            )
+         })
+         let randChoices = this.randomizeChoices(allChoices);
+         currChoiceSet = randChoices;
+      }
       return (
          <div className="trivia-page">
             <nav>
@@ -108,9 +126,10 @@ class TriviaPage extends Component {
                   <li onClick={() => { this.props.switchPage("flags") }}>Flags</li>
                </ul>
             </nav>
+            <p className="questions-remaining">{10-currIndex} Questions Remaining</p>
             <Question question={currentQuestion}/>
-            <div className="choices">
-               {randChoices}
+            <div className="choices" onClick={()=>{this.showCorrectAnswer()}}>
+               {currChoiceSet}
             </div>
          </div>
       )
