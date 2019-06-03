@@ -47,7 +47,7 @@ class JokesPage extends Component {
    }
 
    handleClick = () => {
-       let hideNextPunchline = setTimeout(this.nextJoke, 1500);
+       let hideNextPunchline = setTimeout(this.nextJoke, 2500);
        reset.push(hideNextPunchline);
        this.setState(prevState => ({...prevState, showPunchline:true}));
    }
@@ -61,6 +61,7 @@ class JokesPage extends Component {
    }
 
    render() {
+      let currIndex = this.state.index;  
       let currJoke = this.state.currentJoke;
       let currPunchline = this.state.currentPunchline;
       let showPunchline = this.state.showPunchline;
@@ -73,9 +74,10 @@ class JokesPage extends Component {
                     <li className="alternate-li" onClick={() => {this.props.switchPage("flags")}}>Flags</li>
                 </ul>
             </nav>
-            <div onClick={this.handleClick}>
+            <p className="questions-remaining">{10-currIndex} Questions Remaining</p>
+            <div>
                 <h1 className="alternate-h1">{currJoke}</h1>
-                {showPunchline ? <p className="alternate-p">{currPunchline}</p> : null}
+                {showPunchline ? <p className="alternate-p">{currPunchline}</p> : <p className="reveal-punchline" onClick={this.handleClick}>Reveal Punchline</p>}
             </div>
         </div>
       )
