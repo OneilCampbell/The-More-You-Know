@@ -1,5 +1,4 @@
 .alternate{
-    height:830px;
     position:absolute;
     top:0;
     left:0;
@@ -14,16 +13,17 @@
 }
 
 .alternate-li:hover{
-    color: #ffff99;
+    color:#a1e6f7;
+    text-shadow: 1px 1px 3px black;
 }
 
 .alternate-h1{
     color:black;
     text-shadow: none;
     font-size: 70px;
-    width:800px;
+    width:80%;
     margin-top:150px;
-    margin-left:300px;
+    margin-left:10%;
 }
 
 .alternate-h1:hover{
@@ -32,9 +32,24 @@
 
 .alternate-p{
     margin-top:100px;
-    margin-left:300px;
-    width:800px;
+    margin-left:11%;
+    width:78%;
     background:rgba(238, 238, 238, 0.8);
+    box-shadow: 1px 1px 3px black;
     font-size: 60px;
     text-align: center;
+}
+
+.reveal-punchline{
+    width:30%;
+    margin-left:35%;
+    background:rgba(238, 238, 238, 0.8);
+    box-shadow: 2px 2px 7px black;
+    border-radius: 30px;
+    font-size:60px;
+    text-align:center;
+}
+
+.reveal-punchline:hover{
+    cursor: pointer;
 }

@@ -1,13 +1,13 @@
 .question{
     padding:20px;
-    width:900px;
-    margin-left:250px;
-    margin-top:150px;
+    width:80%;
+    margin-left:10%;
+    margin-top:100px;
 }
 
 .question > h1{
     color:black;
     text-shadow: none;
     text-align: center;
-    font-size: 55px;
+    font-size: 50px;
 }
