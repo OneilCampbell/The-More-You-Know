@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import axios from "axios";
+
+import CountriesData from "../CountriesData/CountriesData";
 
 import "./style.css";
 
@@ -16,9 +17,8 @@ class FlagsPage extends Component {
       }
    }
 
-   fetchFlagData = async () => {
-        let respnse = await axios(this.props.url);
-        let flagData = respnse.data.Response;
+   fetchFlagData = () => {
+        let flagData = CountriesData;
         let flags = [];
         let countries = [];
         let usedIndexes = [];
@@ -65,9 +65,10 @@ class FlagsPage extends Component {
       let currIndex = this.state.index
       let currFlag = this.state.flags[currIndex];
       let currCountry = this.state.countries[currIndex];
+      let countryClass = this.state.countries.length > 0 ? (currCountry.length > 15 ? "long-word" : "short-word") : "";
       let showCountryName = this.state.wasClicked;
       return (
-         <div className="alternate" onClick={this.revealCountry}>
+         <div className="alternate">
             <nav className="alternate-nav">
                 <ul className="alternate-ul">
                     <li className="alternate-li" onClick={() => { this.props.switchPage("trivia") }}>Trivia</li>
@@ -75,9 +76,10 @@ class FlagsPage extends Component {
                     <li className="alternate-li" onClick={() => { this.props.switchPage("flags") }}>Flags</li>
                 </ul>
             </nav>
+            <p className="questions-remaining">{10-currIndex} Questions Remaining</p>
             <h1 className="h1-3">Which Country Has This Flag?</h1>
             <img src={currFlag} alt=""/>
-            {showCountryName ? <p className="p-3">{currCountry}</p> : null}
+            {showCountryName ? <p className={`p-3 ${countryClass}`}>{currCountry}</p> : <p className="reveal-button" onClick={this.revealCountry}>Reveal Country</p>}
          </div>
       )
    }
