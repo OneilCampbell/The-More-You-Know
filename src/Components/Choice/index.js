@@ -13,9 +13,9 @@ class Choice extends Component {
    }
 
    handleClick = () => {
-      let nextQA = setTimeout(this.props.nextQuestion, 1000)
+      let nextQA = setTimeout(this.props.nextQuestion, 2500)
       nextQAArr.push(nextQA);
-      let resetState = setTimeout(() => {this.setState({wasClicked:false})}, 990)
+      let resetState = setTimeout(() => {this.setState({wasClicked:false})}, 2490)
       resetStateArr.push(resetState);
       this.setState({ wasClicked:true,})
    }
@@ -29,14 +29,22 @@ class Choice extends Component {
       let isCorrect = this.props.isCorrect;
       let wasClicked = this.state.wasClicked;
       let choiceClass;
-      !wasClicked 
-      ? 
-      choiceClass = "choice" 
-      :
-      (isCorrect ? choiceClass = "choice correct" : choiceClass = "choice wrong")
-      return (
-         <div className={choiceClass} onClick={this.handleClick}>{this.props.content}</div>
-      )
+      if(isCorrect && this.props.choseAnswer()){
+         choiceClass = "choice correct";
+         return (
+            <div className={choiceClass} onClick={this.handleClick}>{this.props.content}</div>
+         )
+      }
+      else{
+         !wasClicked 
+         ? 
+         choiceClass = "choice" 
+         :
+         (isCorrect ? choiceClass = "choice correct" : choiceClass = "choice wrong")
+         return (
+            <div className={choiceClass} onClick={this.handleClick}>{this.props.content}</div>
+         )
+      }
    }
 }
 
