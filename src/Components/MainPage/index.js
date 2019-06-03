@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import CategorySelectPage from "../CategorySelectPage";
 import TriviaPage from "../TriviaPage";
 import JokesPage from "../JokesPage";
 import FlagsPage from "../FlagsPage";
@@ -16,8 +17,10 @@ class MainPage extends Component {
             "https://opentdb.com/api.php?amount=10",
         ],
         pageToRender:{
-            trivia:true,
+            select: true,
+            trivia:false,
             jokes:false,
+            flags: false,
         },
         isGameOver:false,
       }
@@ -26,8 +29,10 @@ class MainPage extends Component {
    switchPage = (page) => {
         this.setState({
             pageToRender:{
+                select:false,
                 trivia:false,
                 jokes:false,
+                flags:false,
                 [page]:true,
             }
         })
@@ -38,11 +43,8 @@ class MainPage extends Component {
    }
 
    render() {
-       const jokesURL = this.state.URLs[0];
-       const flagsURL = this.state.URLs[1];
-       const triviaURL = this.state.URLs[2];
-       const renderTrivia = this.state.pageToRender.trivia;
-       const renderJokes = this.state.pageToRender.jokes;
+       const allURLs = this.state.URLs;
+       const renderPage = this.state.pageToRender;
        const isGameOver = this.state.isGameOver;
        return (
             isGameOver 
@@ -50,17 +52,23 @@ class MainPage extends Component {
             <div> <EndOfGame /> </div> 
             :
             (
-                renderTrivia 
-                ? 
-                <div> <TriviaPage url={triviaURL} endGame={this.endGame} switchPage={this.switchPage} /> </div> 
-                : 
+                renderPage.select 
+                ?
+                <CategorySelectPage switchPage={this.switchPage} />
+                :
                 (
-                    renderJokes 
-                    ? 
-                    <div><JokesPage url={jokesURL} endGame={this.endGame} switchPage={this.switchPage} /></div> 
+                    renderPage.trivia
+                    ?
+                    <TriviaPage url={allURLs[2]} endGame={this.endGame} switchPage={this.switchPage} />
                     :
-                    <div><FlagsPage url={flagsURL} endGame={this.endGame} switchPage={this.switchPage} /></div>
-                ) 
+                    (
+                        renderPage.jokes 
+                        ? 
+                        <JokesPage url={allURLs[0]} endGame={this.endGame} switchPage={this.switchPage} /> 
+                        :
+                        <FlagsPage url={allURLs[1]} endGame={this.endGame} switchPage={this.switchPage} />
+                    )
+                )     
             )
         )
    }
